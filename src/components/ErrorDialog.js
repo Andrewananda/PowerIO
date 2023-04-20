@@ -6,7 +6,7 @@ class ErrorDialog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: true,
+      visible: false,
       message: 'Error',
       type: '',
     };
@@ -39,7 +39,7 @@ class ErrorDialog extends Component {
         }}
         visible={this.state.visible}>
         <Text style={{color: '#fff'}}>
-          {this.state.type === 'error' ? 'Error' : 'Info'}
+          {this.state.type === 'error' ? 'Error: ' : 'Info: '}
         </Text>
         <Text style={{color: '#fff'}}>{this.state.message}</Text>
       </Banner>

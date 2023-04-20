@@ -30,9 +30,9 @@ class AddVoucher extends Component {
   }
 
   validateInputs() {
-    if (this.state.txtReceiverName.isEmpty()) {
+    if (this.state.txtReceiverName.trim() === '') {
       this.error_dialog.showErrorDialog('Receiver name is required', 'info');
-    } else if (this.state.txtPhoneNumber.isEmpty()) {
+    } else if (this.state.txtPhoneNumber.trim() === '') {
       this.error_dialog.showErrorDialog(
         'Receiver phone number is required',
         'info',
@@ -90,7 +90,7 @@ class AddVoucher extends Component {
         <Button
           mode="contained"
           style={{margin: 10}}
-          onPress={() => this.validateInputs()}>
+          onPress={() => this.props.navigation.navigate('addMerchant')}>
           Continue
         </Button>
       </View>

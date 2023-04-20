@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Contacts, {addContact} from 'react-native-contacts';
+import Contacts from 'react-native-contacts';
 import Contact from './Contact';
 import {FlatList, Modal, View, Text, StyleSheet, Pressable} from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { addSelectedContact, showContacts } from "../redux/actions";
+import { addSelectedContact, showContacts } from '../redux/actions';
 class ContactsList extends Component {
   constructor(props) {
     super(props);

@@ -1,6 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './index';
-import AddVoucher from '../voucher/add';
+import AddVoucher from '../voucher/add/index';
+import ListMerchant from '../voucher/merchant';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,13 @@ function HomeContainer() {
         }}
         name="addVoucher"
         component={AddVoucher}
+      />
+      <Stack.Screen
+        options={{
+          title: 'Add Merchant',
+        }}
+        name="addMerchant"
+        component={ListMerchant}
       />
     </Stack.Navigator>
   );
