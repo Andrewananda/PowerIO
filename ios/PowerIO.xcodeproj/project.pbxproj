@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-PowerIO-PowerIOTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-PowerIO-PowerIOTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8C4FF4F529F1311C007D90CB /* NetworkModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4FF4F429F1311C007D90CB /* NetworkModule.swift */; };
+		8C4FF4F729F1313D007D90CB /* NetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4FF4F629F1313D007D90CB /* NetworkModule.m */; };
 		8CF117C129EFC44400FBAD51 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CF117B029EFC44300FBAD51 /* Foundation.ttf */; };
 		8CF117C329EFC44400FBAD51 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CF117B129EFC44300FBAD51 /* Zocial.ttf */; };
 		8CF117C529EFC44400FBAD51 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CF117B229EFC44300FBAD51 /* Ionicons.ttf */; };
@@ -59,6 +61,9 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-PowerIO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PowerIO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = PowerIO/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-PowerIO-PowerIOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PowerIO-PowerIOTests.release.xcconfig"; path = "Target Support Files/Pods-PowerIO-PowerIOTests/Pods-PowerIO-PowerIOTests.release.xcconfig"; sourceTree = "<group>"; };
+		8C417F0729F1386800B50BA3 /* PowerIO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PowerIO-Bridging-Header.h"; sourceTree = "<group>"; };
+		8C4FF4F429F1311C007D90CB /* NetworkModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModule.swift; sourceTree = "<group>"; };
+		8C4FF4F629F1313D007D90CB /* NetworkModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkModule.m; sourceTree = "<group>"; };
 		8CF117B029EFC44300FBAD51 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
 		8CF117B129EFC44300FBAD51 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
 		8CF117B229EFC44300FBAD51 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
@@ -125,6 +130,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				8C4FF4F429F1311C007D90CB /* NetworkModule.swift */,
+				8C4FF4F629F1313D007D90CB /* NetworkModule.m */,
+				8C417F0729F1386800B50BA3 /* PowerIO-Bridging-Header.h */,
 			);
 			name = PowerIO;
 			sourceTree = "<group>";
@@ -263,7 +271,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -486,6 +494,8 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				8C4FF4F729F1313D007D90CB /* NetworkModule.m in Sources */,
+				8C4FF4F529F1311C007D90CB /* NetworkModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-PowerIO-PowerIOTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -531,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-PowerIO-PowerIOTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = PowerIOTests/Info.plist;
@@ -572,6 +584,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PowerIO;
+				SWIFT_OBJC_BRIDGING_HEADER = "PowerIO-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -598,6 +611,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PowerIO;
+				SWIFT_OBJC_BRIDGING_HEADER = "PowerIO-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
