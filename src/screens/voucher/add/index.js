@@ -37,6 +37,13 @@ class AddVoucher extends Component {
         'Receiver phone number is required',
         'info',
       );
+    } else if (this.state.txtAmount.trim() === '') {
+      this.error_dialog.showErrorDialog(
+        'Amount is required',
+        'info',
+      );
+    } else {
+      this.props.navigation.navigate('addMerchant');
     }
   }
 
@@ -90,7 +97,7 @@ class AddVoucher extends Component {
         <Button
           mode="contained"
           style={{margin: 10}}
-          onPress={() => this.props.navigation.navigate('addMerchant')}>
+          onPress={() => this.validateInputs()}>
           Continue
         </Button>
       </View>

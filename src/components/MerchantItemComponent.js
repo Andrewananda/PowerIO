@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {Card, Checkbox} from 'react-native-paper';
 const MerchantItemComponent = ({data}) => {
-  console.log('IsSelected', data.selected ? 'DataSelected' : 'Not');
   return (
     <Card style={{width: 100, height: 120, margin: 15}}>
       <View>

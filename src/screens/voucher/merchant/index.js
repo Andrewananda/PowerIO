@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import {
+  ActivityIndicator,
   FlatList,
   NativeModules,
   Text,
@@ -9,6 +10,7 @@ import {
 } from 'react-native';
 import MerchantItemComponent from '../../../components/MerchantItemComponent';
 import {Button} from 'react-native-paper';
+import SuccessDialog from '../../../components/SuccessDialog';
 const {NetworkModule} = NativeModules;
 
 class ListMerchant extends Component {
@@ -37,6 +39,7 @@ class ListMerchant extends Component {
         update_txn_id: '',
       },
       selected: null,
+      isLoading: true,
     };
   }
 
@@ -51,7 +54,7 @@ class ListMerchant extends Component {
       .then(res => {
         let data = JSON.parse(res);
         console.log('MerchantResponse', data.result.message);
-        this.setState({data: data.result.message});
+        this.setState({data: data.result.message, isLoading: false});
       })
       .catch(error => {
         console.log('error', error);
@@ -71,29 +74,51 @@ class ListMerchant extends Component {
   }
 
   render() {
-    return (
-      <View>
-        <FlatList
-          data={this.state.data}
-          numColumns={3}
-          style={{height: '90%'}}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <TouchableOpacity onPress={() => this.onPressHandler(item.rec_no)}>
-              <MerchantItemComponent data={item} />
-            </TouchableOpacity>
-          )}
-        />
-        <View style={{height: 100}}>
-          <Button
-            mode="contained"
-            style={{margin: 10}}
-            onPress={() => this.props.navigation.navigate('addMerchant')}>
-            Add Merchant
-          </Button>
+    if (this.state.isLoading) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: '#fff',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <ActivityIndicator style={{alignSelf: 'center'}} size={40} />
+          <Text style={{fontSize: 15, alignSelf: 'center'}}>Loading.....</Text>
         </View>
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View>
+          <SuccessDialog
+            navigation={this.props.navigation}
+            ref={ref => (this.success = ref)}
+          />
+          <FlatList
+            data={this.state.data}
+            numColumns={3}
+            style={{height: '90%'}}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <TouchableOpacity
+                onPress={() => this.onPressHandler(item.rec_no)}>
+                <MerchantItemComponent data={item} />
+              </TouchableOpacity>
+            )}
+          />
+          <View style={{height: 100}}>
+            <Button
+              mode="contained"
+              style={{margin: 10}}
+              onPress={() =>
+                this.success.showSuccessDialog('Merchant added successfully')
+              }>
+              Add Merchant
+            </Button>
+          </View>
+        </View>
+      );
+    }
   }
 }
 
