@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 
 import {
   ActivityIndicator,
-  FlatList,
+  FlatList, Modal,
   NativeModules,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
 import MerchantItemComponent from '../../../components/MerchantItemComponent';
 import {Button} from 'react-native-paper';
 import SuccessDialog from '../../../components/SuccessDialog';
@@ -76,16 +76,24 @@ class ListMerchant extends Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View
+        <Modal
+          visible={this.state.isLoading}
           style={{
             flex: 1,
             backgroundColor: '#fff',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <ActivityIndicator style={{alignSelf: 'center'}} size={40} />
-          <Text style={{fontSize: 15, alignSelf: 'center'}}>Loading.....</Text>
-        </View>
+          <View style={{
+            flex: 1,
+            backgroundColor: '#fff',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <ActivityIndicator style={{alignSelf: 'center'}} size={40} />
+            <Text style={{fontSize: 15, alignSelf: 'center'}}>Loading.....</Text>
+          </View>
+        </Modal>
       );
     } else {
       return (

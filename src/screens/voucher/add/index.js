@@ -84,6 +84,7 @@ class AddVoucher extends Component {
           value={this.state.txtAmount}
           onChangeText={text => this.setState({txtAmount: text})}
           mode={'outlined'}
+          keyboardType={'numeric'}
           style={{marginVertical: 5, marginHorizontal: 10}}
         />
         <TextInput
